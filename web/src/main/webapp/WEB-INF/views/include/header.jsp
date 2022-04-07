@@ -33,7 +33,7 @@
             <li><a href='list.cu' ${category eq 'cu' ? "class='active'" : '' }>고객 관리</a></li>
             <li><a href='list.no'>공지사항</a></li>
             <li><a href='list.bo'>방명록</a></li>
-            <li><a href='list.da'>공공 데이터</a></li>
+            <li><a href='list.da'>공공 데이터_(수정)</a></li>
         </ul>
     </div>
 </header>
