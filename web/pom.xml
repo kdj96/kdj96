@@ -106,37 +106,64 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/m
             <artifactId>junit</artifactId>
             <version>4.7</version>
             <scope>test</scope>
-        </dependency> <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+        </dependency> 
+        
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
         <!-- 스프링에서 JDBC를 사용하기 위한 dependency -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>5.2.2.RELEASE</version>
-        </dependency> <!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
+        </dependency> 
+        
+        <!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
         <!-- DBCP dependency -->
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>1.4</version>
-        </dependency> <!-- https://mvnrepository.com/artifact/com.oracle.ojdbc/ojdbc8 -->
+        </dependency> 
+        
+        <!-- https://mvnrepository.com/artifact/com.oracle.ojdbc/ojdbc8 -->
         <!-- 오라클용 jdbc ojdbc8 -->
         <dependency>
             <groupId>com.oracle.ojdbc</groupId>
             <artifactId>ojdbc8</artifactId>
             <version>19.3.0.0</version>
-        </dependency> <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+        </dependency> 
+        
+        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
         <!-- Mybatis 프레임워크를 사용하기 위한 dependency -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>3.5.3</version>
-        </dependency> <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+        </dependency> 
+        
+        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
         <!-- MyBatis 스프링 dependency -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>2.0.3</version>
         </dependency>
+        
+		
+		<!-- 	hjh 추가 -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>3.4.1</version>
+		</dependency>
+		
+		
+		<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>7.4.1.jre8</version>
+		</dependency>
+		
     </dependencies>
     <build>
         <plugins>

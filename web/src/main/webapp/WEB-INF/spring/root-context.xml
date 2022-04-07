@@ -1,8 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- HikariCP configuration -->
+	<bean id="mssql_dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig" />
+	</bean>
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig"><!-- destroy-method="shutdown" -->
+		<property name="poolName" value="springHikariCP" />
+		<property name="maximumPoolSize" value="50" /><!-- db pool 제한 -->
+		<property name="connectionTestQuery" value="SELECT 1" /><!-- 커넥션 확인용 -->
+		<property name="connectionTimeout" value="30000" /><!-- 최대 응답 대기시간 -->
 		
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" /><!-- 조금 바꿔야할수도 -->
+		<property name="jdbcUrl" value="sqlserver://localhost:3433;databaseName=HJH" /><!-- 조금 바꿔야할수도 / db명 바꾸고 -->
+		<property name="username" value="scott" />
+		<property name="password" value="tiger" />
+	</bean>
+	
+	<!-- 요 밑에는 애들은 선택임 있으면 mapper 자동 생성해주는건데 없어도 됌 -->
+	<!-- SqlSessionFactory -->
+	<bean id="mssql_sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="mssql_dataSource" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:com/**/sqlmap/*.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="mssqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="mssql_sqlSessionFactory" />
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.hanul.*" />
+		<property name="sqlSessionFactoryBeanName"
+			value="mssql_sqlSessionFactory" />
+	</bean>
+	
 </beans>
